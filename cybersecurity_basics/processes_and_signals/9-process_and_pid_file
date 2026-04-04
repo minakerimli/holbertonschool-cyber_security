@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Process that handles PID file and signals
+
+# Save its own PID
+echo $$ > /tmp/myscript.pid
+
+# Handle signals
+trap 'echo "I hate the kill command"' SIGTERM
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'rm -f /tmp/myscript.pid; exit' SIGQUIT SIGTERM
+
+# Infinite loop
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
