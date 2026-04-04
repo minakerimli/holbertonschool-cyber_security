@@ -1,2 +1,10 @@
-#!/bin/bash
-trap "echo 'I hate the kill command'; rm /tmp/myscript.pid; exit" SIGTERM; trap "echo 'Y U no love me?!'" SIGINT; trap "rm /tmp/myscript.pid; exit" SIGQUIT; echo $$ > /tmp/myscript.pid; while true; do echo "To infinity and beyond"; sleep 1; done
+#!/usr/bin/env bash
+# Creates a PID file and handles SIGTERM, SIGINT, and SIGQUIT signals
+trap "echo 'I hate the kill command'; rm /tmp/myscript.pid; exit" SIGTERM
+trap "echo 'Y U no love me?!'" SIGINT
+trap "rm /tmp/myscript.pid; exit" SIGQUIT
+echo $$ > /tmp/myscript.pid
+while true; do
+    echo "To infinity and beyond"
+    sleep 1
+done
