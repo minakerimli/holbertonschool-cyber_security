@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -vE '^#|^$' /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*.conf 2>/dev/null
+grep -Ev "^(Port|PermitRootLogin|PasswordAuthentication|AllowUsers|AllowGroups)" /etc/ssh/sshd_config; sudo ss -tulpn | grep ssh
